@@ -1,0 +1,8 @@
+.title {
+	font-size: 3em;
+}
+
+.flexContainer {
+	display:flex; 
+	justify-content: space-evenly;
+}

@@ -1,0 +1,18 @@
+.title {
+	font-size: 3em;
+}
+
+#intro {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.flexContainer {
+	display:flex; 
+	justify-content: space-evenly;
+}
+
+.mainList {
+	line-height: .7em;
+    font-size: .7em;
+}

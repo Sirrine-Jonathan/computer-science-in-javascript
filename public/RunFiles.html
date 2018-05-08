@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<title>Run</title>
+<head>
+</head>
+<body>
+<div>
+	<div id="structuresList"></div>
+	<div id="algorithmsList"></div>
+</div>
+
+<script>
+let dataStructures = [
+	"array.es6.js",
+	"array.js",
+	"binary-search-tree.es6.js",
+	"binary-search-tree.js",
+	"doubly-linked-list.es6.js",
+	"doubly-linked-list.js",
+	"graph.es6.js",
+	"graph.js",
+	"hash-table.es6.js",
+	"hash-table.js",
+	"queue.es6.js",
+	"queue.js",
+	"set.es6.js",
+	"set.js",
+	"singly-linked-list.es6.js",
+	"singly-linked-list.js",
+	"stack.es6.js",
+	"stack.js",
+	"tree.es6.js",
+	"tree.js",
+	"trie.es6.js",
+	"trie.js"
+];
+
+
+let sortingAlgorithms = [
+	"bubble-sort-counters.es6.js",
+	"bubble-sort-counters.js",
+	"bubble-sort.es6.js",
+	"bubble-sort.js",
+	"insertion-sort-counters.es6.js",
+	"insertion-sort-counters.js",
+	"insertion-sort.es6.js",
+	"insertion-sort.js",
+	"merge-sort-counters.es6.js",
+	"merge-sort-counters.js",
+	"merge-sort.es6.js",
+	"merge-sort.js",
+	"quicksort-counters.es6.js",
+	"quicksort-counters.js",
+	"quicksort.es6.js",
+	"quicksort.js",
+	"selection-sort-counters.es6.js",
+	"selection-sort-counters.js",
+	"selection-sort.es6.js",
+	"selection-sort.js",
+	"shellsort-counters.es6.js",
+	"shellsort-counters.js",
+	"shellsort.es6.js",
+	"shellsort.js"
+];
+function makeLI(folder, filename){
+	let filenameSplit = filename.split('.');
+	filenameSplit.splice(filenameSplit.length - 1, 1);
+	filenameSplit = filenameSplit.join('.');
+	return "<li><input class='scriptBtn' type='button' data-folder='" + folder + "' data-file='" + filename + "' value='" + filenameSplit + "' /></li>";
+}
+
+function makeUL(arr, folder, withBreak = true){
+	let str = '';
+	arr.forEach((cur) => {
+		str += makeLI(folder, cur);
+		str += (withBreak) ? "<br />":"";
+	});
+	return str;
+}
+function structuresList(){
+	document.getElementById("structuresList").innerHTML = makeUL(dataStructures, "data-structures-in-javascript");
+}
+
+function algorithmsList(){
+	document.getElementById("algorithmsList").innerHTML = makeUL(sortingAlgorithms, "sorting-algorithms-in-javascript");
+}
+
+structuresList();
+algorithmsList();
+let scriptBtns = document.getElementsByClassName('scriptBtn');
+for (scr in scriptBtns) {
+	if (scriptBtns[scr].dataset){
+		scriptBtns[scr].addEventListener("click", function(e){
+			document.body.removeChild(document.getElementById("mainScript"));
+			let script = document.createElement("script");
+			script.id = "mainScript";
+			script.async = false;
+			script.src = "../" + this.dataset.folder + "/" + this.dataset.file;
+			document.body.appendChild(script);
+		});
+	}
+}
+</script>
+<script id="mainScript" src=""></script>
+</body>
+</html>

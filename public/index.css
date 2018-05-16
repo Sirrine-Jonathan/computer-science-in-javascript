@@ -2,17 +2,11 @@
 	font-size: 3em;
 }
 
-#intro {
+.mainContent {
 	width: 50%;
-	margin: 0 auto;
 }
 
-.flexContainer {
-	display:flex; 
-	justify-content: space-evenly;
-}
-
-.mainList {
-	line-height: .7em;
-    font-size: .7em;
+.nav a::after {
+	content: "\A";
+	white-space: pre;
 }
